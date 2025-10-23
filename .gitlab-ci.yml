@@ -1,0 +1,16 @@
+image: alpine:latest
+
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp eks-0.1.0.tgz .public/
+    - cp index.yaml .public/
+  artifacts:
+    paths:
+      - .public
+  only:
+    - master
